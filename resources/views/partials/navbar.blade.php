@@ -29,7 +29,6 @@
                                 <div class="flex-grow-1">
                                     <h6 class="mb-0">Hello</h6>
                                     <a href="{{ route('video.upload', ['step' => 'profile']) }}"> <small class="text-muted">{{auth()->user()->name ?? ''}}</small></a>
-                                   
                                 </div>
                             </div>
                         </a>
