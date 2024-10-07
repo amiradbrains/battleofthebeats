@@ -137,7 +137,24 @@ $styles = ['Jazz'=>['img'=>'https://img.freepik.com/free-vector/sport-equipment-
         <!-- <h2>Select the type of your video</h2> -->
         <div class="alert alert-info">You can add upto {{env('MAX_VIDEO_FILE_UPLOAD', 2)}} different style videos, however If you upload only one video it won't effect the ranking and won't effect chance to be selected for next round.</div>
 
-
+        @php
+        use App\Models\Video; // Import the Video model
+        
+        $videos = Video::where('user_id', auth()->user()->id)->get(); // Fetch videos for the logged-in user
+        @endphp
+        
+        <table class="table table-bordered">
+            <tr>
+                <td>#</td>
+                <td>Video</td>
+            </tr>
+            @foreach ($videos as $index => $video)
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $video->original_name }}</td> <!-- Assuming 'file_name' is the video file field in the Video model -->
+            </tr>
+            @endforeach
+        </table>
     </div>
     {{-- <div class="form-group mb-2">
         <label for="videoTitle">Video Title</label>

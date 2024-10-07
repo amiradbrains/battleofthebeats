@@ -111,7 +111,8 @@ class UserDetailController extends Controller
             $validatedData['photo'] = $path;
         }
         $userDetail->update($validatedData);
-        return redirect()->back()->with('success', 'Your profile was updated successfully.');
+        // return redirect()->back()->with('success', 'Your profile was updated successfully.');
+        return redirect()->route('upload-video', ['plan' => 'TNDS-S1?step=audition'])->with('success', 'User detail created successfully. #199');
     }
 
     public function destroy(UserDetail $userDetail)

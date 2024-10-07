@@ -28,41 +28,25 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-0">Hello</h6>
-                                    <a href="{{ route('video.upload', ['step' => 'profile']) }}"> <small class="text-muted">{{auth()->user()->name ?? ''}}</small></a>
+                                    <small class="text-muted">{{auth()->user()->name ?? ''}}</small>
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <div class="dropdown-divider my-1"></div>
-                    </li>
 
                     @role('admin|guru')
 
-                    @else
                     @php
                     $is_paid = App\Models\Payment::where('user_id', auth()->user()->id)->with('plan')->first();
-
                     @endphp
-                    @if($is_paid)
                     <li>
-                        <a class="dropdown-item" href="{{route('upload-video', ['plan' => $is_paid->plan->name, 'step' => 'profile'])}}">
+                        <a class="dropdown-item" href="{{route('upload-video', ['plan' => 'TNDS-S1', 'step' => 'profile'])}}">
                             <i class="mdi mdi-account-outline me-1 mdi-20px"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                    @endif
+
                     @endrole
-
-
-                    <!--
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="mdi mdi-cog-outline me-1 mdi-20px"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li> -->
-
                     @can('admin')
                     <li>
                         <a class="dropdown-item" href="{{ route('admin.videos.index') }}">

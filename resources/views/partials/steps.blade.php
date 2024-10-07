@@ -185,8 +185,8 @@
                             <li role="presentation" class="{{$active == 'Profile' ? 'active' : ''}}">
                                 <a href="{{$active == 'Profile' ? '#' : '?step=profile'}}"><span class="round-tab mdi mdi-account-details mdi-24px"></span> <i>Profile details</i></a>
                             </li>
-                            <li role="presentation" class="{{$active == 'Audition' ? 'active' : ''}}">
-                                <a href="{{$active == 'Audition' ? '#' : '?step=audition'}}"><span class="round-tab mdi mdi-dance-ballroom mdi-24px"></span> <i>Audition details</i></a>
+                            <li role="presentation" class="{{$active == 'Audition' ? 'active' : 'disabled'}}">
+                                <a id="stepsNav" href="{{$active == 'Audition' ? '#' : '?step=audition'}}"><span class="round-tab mdi mdi-dance-ballroom mdi-24px"></span> <i>Audition details</i></a>
                             </li>
                             <li role="presentation" class="{{$active == 'upload' ? 'active' : 'disabled'}}">
                                 <a href="#step5"><span class="round-tab mdi mdi-upload mdi-24px"></span> <i>Upload Video</i></a>

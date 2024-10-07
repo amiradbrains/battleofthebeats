@@ -104,10 +104,10 @@ $proviences = [
             <div class="form-floating form-floating-outline mb-3">
                 <select class="form-select" id="teamType" name="teamType" required>
                     <option value="" selected disabled>Select Team Type</option>
-                    <option value="solo-jr">Solo Jr</option>
-                    <option value="solo">Solo</option>
-                    <option value="duet">Duet</option>
-                    <option value="group">Group</option>
+                    <option value="solo-jr" {{ old('teamType', isset($userDetail) ? $userDetail->teamType : '') == 'solo-jr' ? 'selected' : '' }}>Solo Jr</option>
+                    <option value="solo" {{ old('teamType', isset($userDetail) ? $userDetail->teamType : '') == 'solo' ? 'selected' : '' }}>Solo</option>
+                    <option value="duet" {{ old('teamType', isset($userDetail) ? $userDetail->teamType : '') == 'duet' ? 'selected' : '' }}>Duet</option>
+                    <option value="group" {{ old('teamType', isset($userDetail) ? $userDetail->teamType : '') == 'group' ? 'selected' : '' }}>Group</option>
                 </select>
                 <label for="state">Team Type<span style="color:red">*</span></label>
             </div>
