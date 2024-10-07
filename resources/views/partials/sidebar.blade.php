@@ -24,7 +24,7 @@
             </li>
             @role('guru')
             <li class="menu-item active">
-              <a href="{{route('admin.auditions.index')}}" class="menu-link">
+              <a href="{{route('admin.auditions.index')}}?audition=TNDS-S1&status=&sort=highest-rating" class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-human-female-dance"></i>
                 <div data-i18n="Contestants">All Entries</div>
               </a>
@@ -34,7 +34,7 @@
 
 
             <li class="menu-item active">
-              <a href="{{route('admin.auditions.top')}}" class="menu-link">
+              <a href="{{route('admin.auditions.top')}}?audition=TNDS-S1&status=&sort=highest-rating" class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-star-check"></i>
                 <div data-i18n="Contestants">Top 500</div>
               </a>

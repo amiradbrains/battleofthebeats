@@ -34,7 +34,7 @@
                         </a>
                     </li>
 
-                    @role('admin|guru')
+                    @role('user')
 
                     @php
                     $is_paid = App\Models\Payment::where('user_id', auth()->user()->id)->with('plan')->first();

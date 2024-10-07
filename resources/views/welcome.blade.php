@@ -4,10 +4,27 @@
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100xx dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
 
         @if (Route::has('login'))
-
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-11">
                 @auth
-                    <a href="{{ route('upload-video', ['TNDS-S1']) }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Hello {{ Auth::user()->name }} </a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                    @role('admin')
+                        <a href="{{ route('admin.auditions.index') }}?audition=TNDS-S1&status=&sort=highest-rating"
+                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            Hello {{ Auth::user()->name }}
+                        </a>
+                    @elseif (Auth::user()->hasRole('guru'))
+                        <a href="{{ route('admin.videos.index') }}"
+                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            Hello {{ Auth::user()->name }}
+                        </a>
+                    @elseif (Auth::user()->hasRole('user'))
+                        <a href="{{ route('upload-video', ['TNDS-S1']) }}"
+                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            Hello {{ Auth::user()->name }}
+                        </a>
+                    @endrole
+
+
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
                     <a class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                         href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -33,7 +50,7 @@
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8  z-10">
             <div class="flex justify-center">
-                <img src="{{ asset('images/logo-or.png') }}" width="230px"
+                <img src="{{ asset('images/logo-or.png') }}" width="150px"
                     alt="{{ config('app.name', 'Battle of the Beats') }}">
             </div>
 
@@ -61,7 +78,18 @@
                                     ? 1
                                     : 0;
                         @endphp
-                        <a @if ($plan_active) href="{{ route('upload-video', [$plan->name]) }}" @else  style="cursor: not-allowed" href="#" @endif
+                        <a @if ($plan_active)
+                        @role('admin') 
+                        href="{{ route('admin.auditions.index') }}?audition={{ $plan->name }}&status=&sort=highest-rating" 
+                    @else
+                        @role('guru') 
+                            href="{{ route('admin.videos.index') }}" 
+                        @else
+                            href="{{ route('upload-video', [$plan->name]) }}" 
+                        @endrole
+                    @endrole
+                        
+                        @else  style="cursor: not-allowed" href="#" @endif
                             class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                             <div>
                                 <div class="flex items-center justify-center rounded-full">
@@ -71,8 +99,7 @@
 
                                 <!-- <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Dancing Competition</h2> -->
 
-                                <p
-                                    class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed  dark:text-white">
+                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed  dark:text-white">
                                     Upload Your Audition by clicking here, you will be redirected to the registration
                                     and payment page
                                 </p>
