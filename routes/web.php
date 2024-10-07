@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('audition', AuditionController::class);
 
     Route::get('/upload-video/{plan?}', [VideoController::class, 'index'])->name('upload-video');
+    Route::get('/upload-video/TNDS-S1', [VideoController::class, 'index'])->name('upload-video.TNDS-S1');
     Route::post('/upload-video', [VideoController::class, 'upload'])->name('video.upload');
     Route::get('/thank-you', function () {
         return view('thanks');
