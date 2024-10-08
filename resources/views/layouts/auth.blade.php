@@ -200,7 +200,6 @@
 
 .card-body .form-floating > label {
     color: #9b9b9b;
-    padding: 5px !important;
 }
 
 .card-body .form-floating{
