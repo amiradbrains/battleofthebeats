@@ -176,7 +176,7 @@
 
 
             <hr style="border: 1px solid rgba(100,100,100,0.1);
-  margin-top: 100px;" />
+  margin-top: 40px;" />
             <div class="flex justify-center items-center" style="flex-direction: column; margin-top: 2rem">
 
                 {{-- <div class="text-center text-sm sm:text-center"> --}}
