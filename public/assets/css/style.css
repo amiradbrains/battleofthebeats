@@ -883,7 +883,55 @@
         width: 140px;
         height: 90px;
         padding: 10px;
-        background-color: #fff;
-        border: 2px solid #ef4444;
-        box-shadow: 2px 3px 5px #ef4444;
+        /* background-color: #fff; */
+        /* border: 2px solid #ef4444;
+        box-shadow: 2px 3px 5px #ef4444; */
+    }
+
+
+    .register-btn{
+        background-color: #5CE2E5;
+        border-radius: 3rem;
+        padding: 10px 20px 10px 20px;
+        color: #44647D;
+        font-weight: 900;
+        width: fit-content;
+        display: flex;
+        column-gap: 10px;
+    }
+
+    .main-overlay-bg{
+        background-image: url(../img/backgrounds/dance-bg.png);
+        min-height: 100vh;
+        min-width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0.3;
+    }
+
+    .box-content{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .social-icon-group{
+        position: fixed;
+        z-index: 9999;
+        left: 10px;
+        top: 40%;
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .social-icon-group li{
+        margin-bottom: 25px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
     }
