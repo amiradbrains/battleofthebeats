@@ -200,6 +200,7 @@
 
 .card-body .form-floating > label {
     color: #9b9b9b;
+    padding: 5px !important;
 }
 
 .card-body .form-floating{
@@ -212,6 +213,42 @@
     background-color: #ffffff;
    
 }
+
+.card-body .form-floating-outline :not(select):focus + label, .form-floating-outline :not(select):focus + span {
+    color: #ffffff;
+}
+
+.wizard #mynavTab>li:not(.active) a i {
+    color: #D0D5D7 !important;
+}
+
+.form-check-input:checked {
+    background-color: #5CE2E5;
+    border-color: #5CE2E5;
+}
+
+.wizard .nav-tabsxxx>li.active>a i {
+    color: #5CE2E5 !important;
+}
+.wizard li.active span.round-tab {
+    background: #5CE2E5 !important;
+    color: #000000 !important;
+    border-color: #5CE2E5 !important;
+}
+
+.card-header {
+  
+    color: #fff;
+  
+}
+
+.table > :not(caption) > * > * {
+   
+    color: #000 !important;
+    background-color: #fff !important;
+  
+}
+
 
 
     </style>

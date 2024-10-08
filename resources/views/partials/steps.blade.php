@@ -175,9 +175,9 @@
                 <div class="wizard">
                     <div class="wizard-inner">
                         <div class="connecting-line"></div>
-                        <ul class="nav nav-tabsxxx">
+                        <ul class="nav nav-tabsxxx" id="mynavTab">
                             <li role="presentation" class="{{$active == 'registration' ? 'active' : 'disabled'}}">
-                                <a href="#step1" aria-expanded="true"><span class="round-tab mdi mdi-account-plus mdi-24px"></span> <i>Sign up</i></a>
+                                <a href="#step1" aria-expanded="true"><span class="round-tab mdi mdi-account-plus mdi-24px"></span> <i >Sign up</i></a>
                             </li>
                             {{-- <li role="presentation" class="{{$active == 'Payment' ? 'active' : 'disabled'}}">
                                 <a href="#step2" aria-expanded="false"><span class="round-tab mdi mdi-credit-card mdi-24px"></span> <i>Payment</i></a>
