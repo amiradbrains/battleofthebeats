@@ -214,9 +214,6 @@
    
 }
 
-.card-body .form-floating-outline :not(select):focus + label, .form-floating-outline :not(select):focus + span {
-    color: #ffffff;
-}
 
 .wizard #mynavTab>li:not(.active) a i {
     color: #D0D5D7 !important;
