@@ -141,12 +141,78 @@
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     backdrop-filter: blur(10px); /* Frosted glass blur effect */
     -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border: 1px solid rgba(255, 255, 255, 0.59); /* Slight border for emphasis */
 }
+
+.card-body{
+    color: #ffffff;
+}
+
+.card-body h4{
+    color: #ffffff;
+}
+
+.btn-link {
+        background: none !important;
+        border: none;
+        box-shadow: none !important;
+        color: #5CE2E5 !important;
+    }
+
+  .card-body a {
+    color: #5CE2E5 !important;
+
+}
+
+.card-body .btn{
+    background-color: #5CE2E5;
+        border-radius: 3rem;
+        padding: 10px 20px 10px 20px;
+        color: #44647D;
+        font-weight: 900;
+        width: fit-content;
+        display: flex;
+        column-gap: 10px;
+        border: none;
+}
+
+.card-body .btn:hover{
+    background-color: #44647D !important;
+        border-radius: 3rem;
+        padding: 10px 20px 10px 20px;
+        color: #44647D;
+        font-weight: 900;
+        width: fit-content;
+        display: flex;
+        column-gap: 10px;
+        color: #5CE2E5 !important;
+        border: none;
+
+}
+
+.card-body .form-check-label {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.card-body .form-floating > label {
+    color: #9b9b9b;
+}
+
+.card-body .form-floating{
+    background-color: #fff;
+    border-radius: 0.375rem !important;
+
+}
+
+.card-body .form-control {
+    background-color: #ffffff;
+   
+}
+
 
     </style>
     @yield('head')
@@ -185,7 +251,7 @@
                         <div class="app-brand justify-content-center mt-5">
                             <a href="{{ route('welcome') }}" class="app-brand-link">
                                 <span class="app-brand-logo demo">
-                                    <img class="invert" src="{{ asset('images/logo-or.png') }}" width="190px" alt="{{ config('app.name', 'Battle of the Beats') }}">
+                                    <img  src="{{ asset('images/dancelogo-768x432.png') }}" width="190px" alt="{{ config('app.name', 'Battle of the Beats') }}">
                                 </span>
                             </a>
 

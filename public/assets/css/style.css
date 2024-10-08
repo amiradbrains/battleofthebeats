@@ -935,3 +935,10 @@
         display: flex;
         justify-content: center;
     }
+
+    .box-content {
+        background: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        backdrop-filter: blur(10px); /* Frosted glass blur effect */
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+    }
