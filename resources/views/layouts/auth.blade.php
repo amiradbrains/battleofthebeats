@@ -102,11 +102,59 @@
             color: #707070;
             font-size: 13px;
         }
+        body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: unset;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(58, 53, 65, 0);
+
+}
+
+.main-overlay-bg {
+    background-image: url({{ asset('assets/img/backgrounds/dance-bg.png') }});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    min-width: 100%;
+    opacity: 0.9;
+}
+
+.main-overlay-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* blue color with 50% opacity */
+    z-index: -1; /* Ensure the overlay doesn't cover content */
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    backdrop-filter: blur(10px); /* Frosted glass blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.59); /* Slight border for emphasis */
+}
+
     </style>
     @yield('head')
 </head>
 
 <body>
+<div class="main-overlay-bg"></div>
+
     <div class="position-relative">
 
     @if(auth()->user())
@@ -116,6 +164,7 @@
                 @include('partials.navbar')
 </div>
 @endif
+
 
         <div class="authentication-wrapper authentication-basic container-p-y pt-0" style="flex-direction: column;">
 
@@ -162,9 +211,9 @@
                         </div>
                     </div>
                     <!-- Register Card -->
-                    <img src="{{ asset('assets/img/illustrations/tree-3.png') }}" alt="auth-tree" class="authentication-image-object-left d-none d-lg-block hue" />
+                    <!-- <img src="{{ asset('assets/img/illustrations/tree-3.png') }}" alt="auth-tree" class="authentication-image-object-left d-none d-lg-block hue" />
                     <img src="{{ asset('assets/img/illustrations/auth-basic-mask-light.png') }}" class="authentication-image d-none d-lg-block hue" alt="triangle-bg" data-app-light-img="illustrations/auth-basic-mask-light.png" data-app-dark-img="illustrations/auth-basic-mask-dark.png" />
-                    <img src="{{ asset('assets/img/illustrations/tree.png') }}" alt="auth-tree" class="authentication-image-object-right d-none d-lg-block hue" />
+                    <img src="{{ asset('assets/img/illustrations/tree.png') }}" alt="auth-tree" class="authentication-image-object-right d-none d-lg-block hue" /> -->
                 </div>
             </div>
         </div>
@@ -185,12 +234,12 @@
     </div>
 
     <hr style="border: 1px solid rgba(100,100,100,0.1);
-  margin-top: 100px;" />
-            <div class="d-flex justify-content-center align-items-center" style="flex-direction: column; margin-top: 2rem" >
+  margin-top: 40px;" />
+            <div class="d-flex justify-content-center align-items-center position-relative" style="flex-direction: column; margin-top: 2rem" >
 
                 {{-- <div class="text-center text-sm sm:text-center"> --}}
-                    <img src="{{ asset('images/cards.png') }}" alt="all payment cards">
-                    <img src="{{ asset('images/secure.png') }}" style="max-width: 120px;" alt="100% secure">
+                    <!-- <img src="{{ asset('images/cards.png') }}" alt="all payment cards">
+                    <img src="{{ asset('images/secure.png') }}" style="max-width: 120px;" alt="100% secure"> -->
                     <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
                         Copyright &copy; <?php echo date('Y'); ?> Battle of the Beats.<br />All rights reserved. Powered by
                         Cizzara Studios.
