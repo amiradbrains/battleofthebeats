@@ -5,10 +5,10 @@
 <h4 class="mb-2">Welcome to {{env('APP_NAME')}}! 👋</h4>
 <p class="mb-4">Please sign-in to your account to continue.</p>
 <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('login') }}">
+    <label for="email">Email</label>
     <div class="form-floating form-floating-outline mb-3">
     @csrf
         <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" autofocus />
-        <label for="email">Email</label>
         @error('email')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -16,11 +16,11 @@
         @enderror
     </div>
     <div class="mb-3">
+        <label for="password">Password</label>
         <div class="form-password-toggle">
             <div class="input-group input-group-merge">
                 <div class="form-floating form-floating-outline">
                     <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-                    <label for="password">Password</label>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
