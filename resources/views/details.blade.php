@@ -50,29 +50,32 @@ $proviences = [
 
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="first_name">First Name<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name', isset($userDetail) ? $userDetail->first_name : '') }}" placeholder="Enter your first name" required/>
-                <label for="first_name">First Name<span style="color:red">*</span></label>
 
                 <input type="hidden" value="{{request()->plan}}" name="plan">
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="last_name">Last Name<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name', isset($userDetail) ? $userDetail->last_name : '') }}" placeholder="Enter your last name" required/>
-                <label for="last_name">Last Name<span style="color:red">*</span></label>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="gender">Gender<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <select class="form-select" id="gender" name="gender" required>
                     <option value="male" {{ old('gender', isset($userDetail) ? $userDetail->gender : '') == 'male' ? 'selected' : '' }}>Male</option>
                     <option value="female" {{ old('gender', isset($userDetail) ? $userDetail->gender : '') == 'female' ? 'selected' : '' }}>Female</option>
                     <option value="other" {{ old('gender', isset($userDetail) ? $userDetail->gender : '') == 'other' ? 'selected' : '' }}>Other</option>
                 </select>
-                <label for="gender">Gender<span style="color:red">*</span></label>
             </div>
         </div>
         <!-- <div class="col-md-4">
@@ -81,26 +84,30 @@ $proviences = [
                 <label for="stagename">Stage Name<span style="color:red">*</span></label>
             </div>
         </div> -->
-    </div>
+    
 
-    <div class="row">
-        {{-- <div class="col-md-4">
+   
+        {{-- <div class="col-lg-4 col-md-6">
+            <label for="relationship_status">Relationship Status<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <select class="form-select" id="relationship_status" name="relationship_status">
                     <option value="single" {{ old('relationship_status', isset($userDetail) ? $userDetail->relationship_status : '') == 'single' ? 'selected' : '' }}>Single</option>
                     <option value="married" {{ old('relationship_status', isset($userDetail) ? $userDetail->relationship_status : '') == 'married' ? 'selected' : '' }}>Married</option>
                 </select>
-                <label for="relationship_status">Relationship Status<span style="color:red">*</span></label>
             </div>
         </div> --}}
 
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="date_of_birth">Date of Birth<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', isset($userDetail) ? $userDetail->date_of_birth : '') }}" required/>
-                <label for="date_of_birth">Date of Birth<span style="color:red">*</span></label>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="state">Team Type<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <select class="form-select" id="teamType" name="teamType" required>
                     <option value="" selected disabled>Select Team Type</option>
@@ -109,29 +116,32 @@ $proviences = [
                     <option value="duet" {{ old('teamType', isset($userDetail) ? $userDetail->teamType : '') == 'duet' ? 'selected' : '' }}>Duet</option>
                     <option value="group" {{ old('teamType', isset($userDetail) ? $userDetail->teamType : '') == 'group' ? 'selected' : '' }}>Group</option>
                 </select>
-                <label for="state">Team Type<span style="color:red">*</span></label>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="city">No of Member<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="number" class="form-control" id="members" name="members" value="{{ old('city', isset($userDetail) ? $userDetail->members : '') }}" placeholder="No of Member" required/>
-                <label for="city">No of Member<span style="color:red">*</span></label>
             </div>
         </div>
-    </div>
-
+    
+        </div>
 
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="city">City<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="city" name="city" value="{{ old('city', isset($userDetail) ? $userDetail->city : '') }}" placeholder="Enter your city" required/>
-                <label for="city">City<span style="color:red">*</span></label>
             </div>
         </div>
 
 
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="state">State<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <select class="form-select" id="state" name="state" required>
                     <option value="" selected disabled>Select state</option>
@@ -139,70 +149,73 @@ $proviences = [
                     <option value="{{$provience}}" {{ old('state', isset($userDetail) ? $userDetail->state : '') == $provience ? 'selected' : '' }}>{{$provience}}</option>
                     @endforeach
                 </select>
-                <label for="state">State<span style="color:red">*</span></label>
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+        <label for="pin_code">Postal Code<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="pin_code" name="pin_code" value="{{ old('pin_code', isset($userDetail) ? $userDetail->pin_code : '') }}" placeholder="Enter your postal code" required/>
-                <label for="pin_code">Postal Code<span style="color:red">*</span></label>
             </div>
         </div>
-    </div>
+    
+        <div class="col-lg-4 col-md-6">
+        <label for="phone">Phone<span style="color:red">*</span></label>
 
-    <div class="row">
-        <div class="col-md-4">
             <div class="form-floating form-floating-outline mb-3">
                 <input type="tel" class="form-control" id="phone" name="phone" value="{{ old('phone', isset($userDetail) ? $userDetail->phone : '') }}" placeholder="Enter your phone number" required/>
-                <label for="phone">Phone<span style="color:red">*</span></label>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-lg-8 col-md-12">
+        <label for="address">Address<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="address" name="address" value="{{ old('address', isset($userDetail) ? $userDetail->address : '') }}" placeholder="Enter your address"  required/>
-                <label for="address">Address<span style="color:red">*</span></label>
             </div>
         </div>
     </div>
     {{-- <div class="row">
         <div class="col-md-4">
+        <label for="education">Education<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="education" name="education" value="{{ old('education', isset($userDetail) ? $userDetail->education : '') }}" placeholder="Enter your education">
-                <label for="education">Education<span style="color:red">*</span></label>
             </div>
         </div>
         <div class="col-md-4">
+        <label for="occupation">Occupation<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="occupation" name="occupation" value="{{ old('occupation', isset($userDetail) ? $userDetail->occupation : '') }}" placeholder="Enter your occupation">
-                <label for="occupation">Occupation<span style="color:red">*</span></label>
             </div>
         </div>
         <div class="col-md-4">
+        <label for="work_experience">Work Experience<span style="color:red">*</span></label>
+
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="work_experience" name="work_experience" value="{{ old('work_experience', isset($userDetail) ? $userDetail->work_experience : '') }}" placeholder="Enter your work experience">
-                <label for="work_experience">Work Experience<span style="color:red">*</span></label>
             </div>
         </div>
     </div> --}}
 
     {{-- <div class="row">
         <div class="col-md-4">
+            <label for="instagram">Instagram Link<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="url" class="form-control" id="instagram" name="instagram" value="{{ old('instagram', isset($userDetail) ? $userDetail->instagram : '') }}" placeholder="Enter your Instagram link">
-                <label for="instagram">Instagram Link<span style="color:red">*</span></label>
             </div>
         </div>
         <div class="col-md-4">
+            <label for="youtube">YouTube Link<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="url" class="form-control" id="youtube" name="youtube" value="{{ old('youtube', isset($userDetail) ? $userDetail->youtube : '') }}" placeholder="Enter your YouTube link">
-                <label for="youtube">YouTube Link<span style="color:red">*</span></label>
             </div>
         </div>
         <div class="col-md-4">
+            <label for="facebook">Facebook Link<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="url" class="form-control" id="facebook" name="facebook" value="{{ old('facebook', isset($userDetail) ? $userDetail->facebook : '') }}" placeholder="Enter your Facebook link">
-                <label for="facebook">Facebook Link<span style="color:red">*</span></label>
             </div>
         </div>
 
@@ -213,57 +226,57 @@ $proviences = [
     {{-- <hr>
     <div class="row">
         <div class="col-md-4">
+            <label for="g_first_name">Guardian's First Name<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="g_first_name" name="g_first_name" value="{{ old('g_first_name', isset($userDetail) ? $userDetail->g_first_name : '') }}" placeholder="Enter guardian's first name">
-                <label for="g_first_name">Guardian's First Name<span style="color:red">*</span></label>
             </div>
         </div>
         <div class="col-md-4">
+            <label for="g_last_name">Guardian's Last Name<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="g_last_name" name="g_last_name" value="{{ old('g_last_name', isset($userDetail) ? $userDetail->g_last_name : '') }}" placeholder="Enter guardian's last name">
-                <label for="g_last_name">Guardian's Last Name<span style="color:red">*</span></label>
             </div>
         </div>
         <div class="col-md-4">
+            <label for="g_phone">Guardian's Phone<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="tel" class="form-control" id="g_phone" name="g_phone" value="{{ old('g_phone', isset($userDetail) ? $userDetail->g_phone : '') }}" placeholder="Enter guardian's phone number">
-                <label for="g_phone">Guardian's Phone<span style="color:red">*</span></label>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8">
+            <label for="g_address">Guardian's Address<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="g_address" name="g_address" value="{{ old('g_address', isset($userDetail) ? $userDetail->g_address : '') }}" placeholder="Enter guardian's address">
-                <label for="g_address">Guardian's Address<span style="color:red">*</span></label>
             </div>
         </div>
         <div class="col-md-4">
+            <label for="g_pin_code">Guardian's Postal Code<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="g_pin_code" name="g_pin_code" value="{{ old('g_pin_code', isset($userDetail) ? $userDetail->g_pin_code : '') }}" placeholder="Enter guardian's postal code">
-                <label for="g_pin_code">Guardian's Postal Code<span style="color:red">*</span></label>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
+            <label for="g_city">Guardian's City<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="g_city" name="g_city" value="{{ old('g_city', isset($userDetail) ? $userDetail->g_city : '') }}" placeholder="Enter guardian's city">
-                <label for="g_city">Guardian's City<span style="color:red">*</span></label>
             </div>
         </div>
 
         <div class="col-md-4">
+            <label for="g_state">Guardian's State<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="text" class="form-control" id="g_state" name="g_state" value="{{ old('g_state', isset($userDetail) ? $userDetail->g_state : '') }}" placeholder="Enter guardian's state">
-                <label for="g_state">Guardian's State<span style="color:red">*</span></label>
             </div>
         </div>
 
         <div class="col-md-4">
+            <label for="g_email">Guardian's Email<span style="color:red">*</span></label>
             <div class="form-floating form-floating-outline mb-3">
                 <input type="email" class="form-control" id="g_email" name="g_email" value="{{ old('g_email', isset($userDetail) ? $userDetail->g_email : '') }}" placeholder="Enter guardian's email">
-                <label for="g_email">Guardian's Email<span style="color:red">*</span></label>
             </div>
         </div>
     </div> --}}

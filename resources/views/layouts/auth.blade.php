@@ -245,6 +245,28 @@
   
 }
 
+.connecting-line {
+        height: 2px;
+        background: #e0e0e0;
+        position: absolute;
+        width: 80% !important;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 15px;
+        z-index: 0 !important;
+    }
+
+    #mynavTab{
+        justify-content: space-between !important;
+    }
+
+    @media (max-width: 768px) {
+    .wizard .nav-tabsxxx>li a i {
+        display: none;
+    }
+}
+
 
 
     </style>

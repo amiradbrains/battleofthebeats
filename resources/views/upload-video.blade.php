@@ -168,7 +168,7 @@ $styles = ['Jazz'=>['img'=>'https://img.freepik.com/free-vector/sport-equipment-
     </div>
     <div class="form-group mb-3">
         <label for="videoFile">Choose Video File <span class="required">*</span></label>
-        <input type="file" class="form-control" id="videoFile" name="videoFile" required>
+        <input type="file" class="form-control" id="videoFile" accept=".mp4" name="videoFile" required>
         Max file size allowed: {{env('MAX_VIDEO_FILE_SIZE', 100000) / 1000}}MB
         <!-- <input type="file" accept="video/*" class="form-control-file" id="videoFile" name="videoFile" required>Max file size allowed: {{env('MAX_VIDEO_FILE_SIZE', 100000) / 1000}}MB -->
     </div>
