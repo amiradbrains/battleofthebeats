@@ -942,3 +942,7 @@
         backdrop-filter: blur(10px); /* Frosted glass blur effect */
         -webkit-backdrop-filter: blur(10px); /* Safari support */
     }
+
+    .video-section{
+        position: relative;
+    }
