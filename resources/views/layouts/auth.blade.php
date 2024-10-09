@@ -337,8 +337,8 @@
             <div class="d-flex justify-content-center align-items-center position-relative" style="flex-direction: column; margin-top: 2rem" >
 
                 {{-- <div class="text-center text-sm sm:text-center"> --}}
-                    <!-- <img src="{{ asset('images/cards.png') }}" alt="all payment cards">
-                    <img src="{{ asset('images/secure.png') }}" style="max-width: 120px;" alt="100% secure"> -->
+                    <img src="{{ asset('images/cards.png') }}" alt="all payment cards">
+                    <img src="{{ asset('images/secure.png') }}" style="max-width: 120px;" alt="100% secure">
                     <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
                         Copyright &copy; <?php echo date('Y'); ?> Battle of the Beats.<br />All rights reserved. Powered by
                         Cizzara Studios.
