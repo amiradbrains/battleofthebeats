@@ -28,25 +28,19 @@
                 Full Address
             </th>
         </tr>
-
         @for ($i = 0; $i < $members; $i++)
-
             <tr>
-
-                <th>
-                    Participant {{ $i + 1 }}
-                </th>
+                <th>Participant {{ $i + 1 }}</th>
                 @foreach ($group_fields as $key => $group_field)
                     <td>
-                        <input type="text" class="form-control" id="members[{{ $group_field }}]"
-                            name="members[{{ $group_field }}][]" value="" required />
+                        <input type="text" class="form-control" id="members[{{ $group_field }}][{{ $i }}]"
+                            name="members[{{ $group_field }}][{{ $i }}]"
+                            value="{{ old('members.' . $group_field . '.' . $i, isset($userDetail) ? $userDetail->members[$group_field][$i] : '') }}"
+                            required />
                     </td>
                 @endforeach
             </tr>
-
         @endfor
-
-
     </tbody>
 </table>
 
