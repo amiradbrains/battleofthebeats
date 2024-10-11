@@ -45,7 +45,9 @@
                     @foreach ($group_fields as $key => $group_field)
                         <td>
                             <input type="text" class="form-control" id="members[{{ $group_field }}]"
-                                name="members[{{ $group_field }}][]" value="" required />
+                                name="members[{{ $group_field }}][]"
+                                value="{{ old('members[' . $group_field . ']'), isset($userDetail) ? $userDetail->members[$group_field][$i] : '' }}"
+                                required />
                         </td>
                     @endforeach
                 </tr>
