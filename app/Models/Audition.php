@@ -44,6 +44,11 @@ class Audition extends Model
         'privacy_policy',
         'terms_conditions',
         'refund_policy',
+
+        'dance_form',
+        'dance_style',
+        'choreograph',
+        'name_representing',
     ];
 
     protected $casts = [
