@@ -15,35 +15,42 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('plan_id');
-            $table->string('stagename')->nullable();
-            $table->string('auditioncity');
-            $table->text('why_tup_expectations')->nullable();
-            $table->text('why_we_select_you')->nullable();
-            $table->text('future_plan_if_win')->nullable();
-            $table->text('opinion_new_season_tup')->nullable();
-            $table->text('written_composed_song_inspiration')->nullable();
-            $table->text('life_changing_incident')->nullable();
-            $table->text('change_about_self_love_about_self')->nullable();
-            $table->text('unique_qualities')->nullable();
-            $table->text('main_goal_difficulties')->nullable();
-            $table->text('biggest_strength_support')->nullable();
-            $table->text('favorite_judge_why')->nullable();
-            $table->text('role_model_inspiration')->nullable();
-            $table->text('prepared_songs')->nullable();
-            $table->string('how_know_about_auditions')->nullable();
-            $table->string('how_know_about_auditions_detail')->nullable();
-            $table->text('previous_performance')->nullable();
+            $table->string('participant_name'); // name for representing identity
+            $table->boolean('has_participated_before'); // dance competition participation
+            $table->string('choreographer_details')->nullable(); // choreographer details
+            $table->string('dance_form'); // dance form
+            $table->text('opportunities_after_participation')->nullable(); // opportunities after competition
 
-            $table->string('genre_of_singing')->nullable();
-            $table->text('music_experience')->nullable();
-            $table->text('music_qualification')->nullable();
+            // Unique Fields for Junior Solo Entry
+            $table->text('strengths_and_weaknesses')->nullable(); // strengths and weaknesses
+            $table->string('favorite_dancer')->nullable(); // favorite dancer
+            $table->string('role_model')->nullable(); // role model
+            $table->string('best_dance_styles', 255)->nullable(); // best dance styles (2 minimum)
+            $table->text('video_description')->nullable(); // audition video description
 
+            // Additional Fields for Solo Entry
+            $table->text('expectations')->nullable(); // expectations from competition
+            $table->text('own_choreography_experience')->nullable(); // personal choreography experience
+            $table->text('goals_and_difficulties')->nullable(); // goals and difficulties
+            $table->text('what_makes_you_better')->nullable(); // unique factors
 
+            // Additional Fields for Duet
+            $table->text('duo_story')->nullable(); // story behind duo formation
+            $table->integer('years_performing')->nullable(); // years performing together
+            $table->text('strengths_and_weaknesses_duet')->nullable(); // duet strengths and weaknesses
 
+            // Additional Fields for Group
+            $table->text('group_story')->nullable(); // story behind group formation
+            $table->text('group_strengths_and_weaknesses')->nullable(); // group strengths and weaknesses
+            $table->text('what_makes_group_better')->nullable(); // why is the group better
 
+            // Common fields for agreements and video submission
+            $table->boolean('privacy_policy')->default(false); // privacy policy agreement
+            $table->boolean('terms_conditions')->default(false); // terms and conditions
+            $table->boolean('refund_policy')->default(false); // refund policy
+            $table->string('audition_video')->nullable(); // video file path
 
-            $table->timestamps();
-
+            $table->timestamps(); // timestamps
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
         });

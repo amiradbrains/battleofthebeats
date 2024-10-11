@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class AuditionController extends Controller
 {
     public $validation_fields, $validation_msgs;
-    public function __construct(){
+    public function __construct()
+    {
         $this->validation_fields = [
 
             'stagename' => 'nullable|string|max:255',
@@ -20,15 +21,11 @@ class AuditionController extends Controller
             'future_plan_if_win' => 'required|string|max:5000',
             'probability' => 'required|string|max:5000',
 
-
             'unique_qualities' => 'required|string|max:5000',
             'main_goal_difficulties' => 'required|string|max:5000',
             'biggest_strength_support' => 'required|string|max:5000',
             'favorite_judge_why' => 'required|string|max:5000',
             'role_model_inspiration' => 'required|string|max:5000',
-
-
-
 
             'written_composed_song_inspiration' => 'required|string|max:5000',
             'prepared_songs' => 'required|string|max:5000',
@@ -42,10 +39,10 @@ class AuditionController extends Controller
 
             'members' => 'nullable|array',
 
-
-
-
-
+            'privacy_policy' => 'required|accepted',
+            'terms_conditions' => 'required|accepted',
+            'refund_policy' => 'required|accepted',
+            'responsibility' => 'required|accepted',
         ];
         $this->validation_msgs = [
             'written_composed_song_inspiration.*' => 'Please fillout your inspiration with no more than 5000 characters',
@@ -76,7 +73,7 @@ class AuditionController extends Controller
     public function store(Request $request)
     {
         $plan = $request->plan;
-        $validatedData = $request->validate($this->validation_fields,$this->validation_msgs);
+        $validatedData = $request->validate($this->validation_fields, $this->validation_msgs);
         $plan_id = $this->plan_id($plan);
         if (!$plan_id) {
             return redirect()->route('home')->with('error', 'Plan not found');
@@ -85,7 +82,7 @@ class AuditionController extends Controller
         //     return redirect()->route('upload-video', ['plan' => $plan]);
         // }
 
-    //    $members_data = $validatedData['members'];
+        //    $members_data = $validatedData['members'];
 
         $validatedData['plan_id'] = $plan_id;
         $validatedData['user_id'] = auth()->user()->id;
@@ -111,7 +108,7 @@ class AuditionController extends Controller
 
     public function update(Request $request, Audition $userDetail)
     {
-        $validatedData = $request->validate($this->validation_fields,$this->validation_msgs);
+        $validatedData = $request->validate($this->validation_fields, $this->validation_msgs);
 
         $plan = $request->plan;
         $user_id = Auth::id();

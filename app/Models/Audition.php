@@ -39,7 +39,11 @@ class Audition extends Model
         'rolemodel',
         'group_together',
         'how_long_group_together',
-        'members'
+        'members',
+        'responsibility',
+        'privacy_policy',
+        'terms_conditions',
+        'refund_policy',
     ];
 
     protected $casts = [
@@ -47,7 +51,8 @@ class Audition extends Model
     ];
 
     // User model relationship
-    function user(){
+    function user()
+    {
         return $this->belongsTo(User::class);
     }
     public function plan()

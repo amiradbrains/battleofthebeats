@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserDetail;
 use App\Models\Video;
+use App\Models\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserDetailController extends Controller
 {
@@ -27,7 +28,7 @@ class UserDetailController extends Controller
     {
 
         // Validate the request data
-        $validatedData = $request->validate([
+        $rules = [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'gender' => 'required|in:male,female,other',
@@ -39,6 +40,8 @@ class UserDetailController extends Controller
             'members' => 'required|numeric|min:1|max:1000',
             'pin_code' => 'required|string|max:20',
             'phone' => 'required|string|max:20',
+            'photo' => 'required|image|max:11264|mimes:jpeg,png,jpg,gif,svg',
+
             'education' => 'nullable|string',
             'occupation' => 'nullable|string',
             'work_experience' => 'nullable|string',
@@ -47,17 +50,24 @@ class UserDetailController extends Controller
             'instagram' => 'nullable|url',
             'youtube' => 'nullable|url',
             'facebook' => 'nullable|url',
-            'photo' => 'image|max:11264|mimes:jpeg,png,jpg,gif,svg',
+        ];
 
-              // 'g_first_name' => 'required|string|max:255',
-            // 'g_last_name' => 'required|string|max:255',
-            // 'g_address' => 'required|string|max:255',
-            // 'g_city' => 'required|string|max:255',
-            // 'g_state' => 'required|string|max:255',
-            // 'g_pin_code' => 'required|string|max:20',
-            // 'g_phone' => 'required|string|max:20',
-            // 'g_email' => 'required|email|max:255',
-        ]);
+        // Conditionally add guardian fields validation if teamType is 'solo-jr'
+        if ($request->input('teamType') === 'solo-jr') {
+            $rules = array_merge($rules, [
+                'g_first_name' => 'required|string|max:255',
+                'g_last_name' => 'required|string|max:255',
+                'g_address' => 'required|string|max:255',
+                'g_city' => 'required|string|max:255',
+                'g_state' => 'required|string|max:255',
+                'g_pin_code' => 'required|string|max:20',
+                'g_phone' => 'required|string|max:20',
+                'g_email' => 'required|email|max:255',
+            ]);
+        }
+        // Validate the form data
+        $validatedData = $request->validate($rules);
+
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['plan_id'] = "TNDS-S1";
 
@@ -66,7 +76,7 @@ class UserDetailController extends Controller
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $fileName = uniqid() . '.' . $photo->getClientOriginalExtension();
-            $path = $photo->storeAs('profile/', $fileName, 'public');
+            $path = $photo->storeAs('profile', $fileName, 'public');
         }
 
         $validatedData['photo'] = $path;
@@ -90,7 +100,7 @@ class UserDetailController extends Controller
 
     public function update(Request $request, UserDetail $userDetail)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'gender' => 'required|in:male,female,other',
@@ -99,15 +109,51 @@ class UserDetailController extends Controller
             'city' => 'required|string|max:255',
             'state' => 'required|string|max:255',
             'teamType' => 'required|string|max:255',
+            'members' => 'required|numeric|min:1|max:1000',
             'pin_code' => 'required|string|max:20',
             'phone' => 'required|string|max:20',
             'photo' => 'nullable|image|max:11264|mimes:jpeg,png,jpg,gif,svg',
-        ]);
+
+            'education' => 'nullable|string',
+            'occupation' => 'nullable|string',
+            'work_experience' => 'nullable|string',
+            'hobbies' => 'nullable|string',
+            'describe_yourself' => 'nullable|string',
+            'instagram' => 'nullable|url',
+            'youtube' => 'nullable|url',
+            'facebook' => 'nullable|url',
+        ];
+
+        // Conditionally add guardian fields validation if teamType is 'solo-jr'
+        if ($request->input('teamType') === 'solo-jr') {
+            $rules = array_merge($rules, [
+                'g_first_name' => 'required|string|max:255',
+                'g_last_name' => 'required|string|max:255',
+                'g_address' => 'required|string|max:255',
+                'g_city' => 'required|string|max:255',
+                'g_state' => 'required|string|max:255',
+                'g_pin_code' => 'required|string|max:20',
+                'g_phone' => 'required|string|max:20',
+                'g_email' => 'required|email|max:255',
+            ]);
+        }
+
+        // Validate the form data
+        $validatedData = $request->validate($rules);
 
         if ($request->hasFile('photo')) {
+            // Check if this is an update operation and if the user already has a photo
+            if (isset($user) && $user->photo) {
+                // Delete the old photo
+                Storage::disk('public')->delete($user->photo);
+            }
+
+            // Handle the new photo upload
             $photo = $request->file('photo');
-            $fileName = uniqid() . '.' . $photo->getClientOriginalExtension();
-            $path = $photo->storeAs('profile/', $fileName, 'public');
+            $fileName = uniqid() . '.' . $photo->getClientOriginalExtension(); // Generate a unique file name
+            $path = $photo->storeAs('profile', $fileName, 'public'); // Store the photo in 'profile' directory in 'public' disk
+
+            // Add the new photo path to the validated data array
             $validatedData['photo'] = $path;
         }
         $userDetail->update($validatedData);

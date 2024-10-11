@@ -1,5 +1,6 @@
 @php
-    $group_fields = ['name', 'dob', 'contact_no', 'gender'];
+    $group_fields = ['name', 'dob', 'contact_no', 'gender', 'email'];
+    $members = App\Models\UserDetail::where('user_id', Auth::user()->id)->value('members');
 @endphp
 <label for="group_name">Number of Group Members and Details: <span class="required">*</span></label>
 <table class="table table-bordered mb-3">
@@ -17,8 +18,11 @@
             <th>
                 Contact No.
             </th>
-<th>
+            <th>
                 Gender
+            </th>
+            <th>
+                Email
             </th>
         </tr>
 
@@ -31,8 +35,8 @@
                 </th>
                 @foreach ($group_fields as $key => $group_field)
                     <td>
-                        <input type="text" class="form-control" id="members[{{$group_field}}]" name="members[{{$group_field}}][]"
-        value="" required />
+                        <input type="text" class="form-control" id="members[{{ $group_field }}]"
+                            name="members[{{ $group_field }}][]" value="" required />
                     </td>
                 @endforeach
             </tr>
@@ -46,7 +50,8 @@
 
 <div class="form-floatingXXX  d-flex flex-column-reverse form-floating-outline mb-3">
     <textarea class="form-control" id="contract" name="contract" rows="3" required>{{ old('contract', isset($userDetail) ? $userDetail->contract : '') }}</textarea>
-    <label for="contract">Are you in a contract with any production house or same? <span class="required">*</span></label>
+    <label for="contract">Are you in a contract with any production house or same? <span
+            class="required">*</span></label>
 </div>
 
 <div class="form-floatingXXX  d-flex flex-column-reverse form-floating-outline mb-3">
@@ -123,7 +128,8 @@
 
 <div class="form-floatingXXX  d-flex flex-column-reverse form-floating-outline mb-3">
     <textarea class="form-control" id="rolemodel" name="rolemodel" rows="3" required>{{ old('rolemodel', isset($userDetail) ? $userDetail->rolemodel : '') }}</textarea>
-    <label for="rolemodel">Who you consider to be your role model in Bollywood? <span class="required">*</span></label>
+    <label for="rolemodel">Who you consider to be your role model in Bollywood? <span
+            class="required">*</span></label>
 </div>
 
 <div class="form-floatingXXX  d-flex flex-column-reverse form-floating-outline mb-3">

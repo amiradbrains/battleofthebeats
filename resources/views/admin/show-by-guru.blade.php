@@ -16,12 +16,6 @@
     textarea {
         resize: none;
     }
-    .video-info{
-            color : #b7b7b7  !important;
-        }
-        .video-info h6,.video-info .h6,.video-info h5,.video-info .h5,.video-info h4,.video-info .h4,.video-info h3,.video-info .h3,.video-info h2,.video-info .h2,.video-info h1,.video-info .h1 {
-            color : #ffffff !important;
-}
 </style>
 
 
@@ -44,7 +38,7 @@
                 </div>
                 @endif
                 <h5 class="pb-3 border-bottom mb-3">Details</h5>
-                <div class="info-container video-info">
+                <div class="info-container">
                     <ul class="list-unstyled mb-4">
                         <li class="mb-3">
                             <span class="h6">Title:</span>
@@ -138,7 +132,7 @@
                                 @foreach ($rating_levels as $i => $rating_level)
                                 @if(($ratedByGuru['rating'] ?? null) == ($i+1))
                                 <label class="list-group-item">
-                                    <span class="form-check mb-0 text-white">
+                                    <span class="form-check mb-0">
                                         <input id="rating{{ ($i+1) }}" class="form-check-input me-1" type="radio" name="rating" value="{{ ($i+1) }}" {{($ratedByGuru['rating'] ?? null) == ($i+1) ? 'checked' : ''}}>
                                         {{($i+1) .'. '. $rating_level}}
                                     </span>

@@ -76,3 +76,13 @@ Route::middleware(['role:guru|admin'])->group(function () {
         Route::post('/export-audition', [AdminVideoController::class, 'exportaudition'])->name('export.audition');
     });
 });
+
+Route::get('privacy-policy', function () {
+    return view('pvc');
+});
+Route::get('terms-conditions', function () {
+    return view('tandc');
+});
+Route::get('refund-cancelation', function () {
+    return view('refcanc');
+});

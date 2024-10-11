@@ -16,13 +16,6 @@
         textarea {
             resize: none;
         }
-
-        .video-info{
-            color : #b7b7b7  !important;
-        }
-        .video-info h6,.video-info .h6,.video-info h5,.video-info .h5,.video-info h4,.video-info .h4,.video-info h3,.video-info .h3,.video-info h2,.video-info .h2,.video-info h1,.video-info .h1 {
-            color : #ffffff !important;
-}
     </style>
 
 
@@ -44,8 +37,8 @@
                             @endforeach
                         </div>
                     @endif
-                    <h5 class="pb-3 border-bottom mb-3 text-white">Details</h5>
-                    <div class="info-container video-info">
+                    <h5 class="pb-3 border-bottom mb-3">Details</h5>
+                    <div class="info-container">
                         <ul class="list-unstyled mb-4">
                             <li class="mb-3">
                                 <span class="h6">Title:</span>

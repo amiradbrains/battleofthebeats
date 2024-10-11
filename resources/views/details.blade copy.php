@@ -70,6 +70,9 @@
 
             $how_know = ['TV ads', 'Social Media', 'Newspaper ads', 'Outdoor ads', 'Others'];
         @endphp
+
+
+
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <label for="first_name">First Name<span style="color:red">*</span></label>
@@ -109,6 +112,28 @@
                     </select>
                 </div>
             </div>
+            <!-- <div class="col-md-4">
+                                                                                            <div class="form-floating form-floating-outline mb-3">
+                                                                                                <input type="text" class="form-control" id="stagename" name="stagename" value="{{ old('stagename', isset($userDetail) ? $userDetail->stagename : '') }}" placeholder="Enter your stage name">
+                                                                                                <label for="stagename">Stage Name<span style="color:red">*</span></label>
+                                                                                            </div>
+                                                                                        </div> -->
+
+            {{-- <div class="col-lg-4 col-md-6">
+                <label for="relationship_status">Relationship Status<span style="color:red">*</span></label>
+
+                <div class="form-floating form-floating-outline mb-3">
+                    <select class="form-select" id="relationship_status" name="relationship_status">
+                        <option value="single"
+                            {{ old('relationship_status', isset($userDetail) ? $userDetail->relationship_status : '') == 'single' ? 'selected' : '' }}>
+                            Single</option>
+                        <option value="married"
+                            {{ old('relationship_status', isset($userDetail) ? $userDetail->relationship_status : '') == 'married' ? 'selected' : '' }}>
+                            Married</option>
+                    </select>
+                </div>
+            </div> --}}
+
             <div class="col-lg-4 col-md-6">
                 <label for="date_of_birth">Date of Birth<span style="color:red">*</span></label>
 
@@ -139,11 +164,11 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
-                <label for="members">No of Member<span style="color:red">*</span></label>
+                <label for="city">No of Member<span style="color:red">*</span></label>
 
                 <div class="form-floating form-floating-outline mb-3">
                     <input type="number" class="form-control" id="members" name="members"
-                        value="{{ old('members', isset($userDetail) ? $userDetail->members : '') }}"
+                        value="{{ old('city', isset($userDetail) ? $userDetail->members : '') }}"
                         placeholder="No of Member" required />
                 </div>
             </div>
@@ -336,9 +361,125 @@
                 </div>
             </div>
         </div>
+        <!-- <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="previous_performance" name="previous_performance" rows="3">{{ old('previous_performance', isset($userDetail) ? $userDetail->previous_performance : '') }}</textarea>
+                                                                                        <label for="previous_performance">Previous Performance<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="music_experience" name="music_experience" rows="3">{{ old('music_experience', isset($userDetail) ? $userDetail->music_experience : '') }}</textarea>
+                                                                                        <label for="music_experience">Music Experience<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="music_qualification" name="music_qualification" rows="3">{{ old('music_qualification', isset($userDetail) ? $userDetail->music_qualification : '') }}</textarea>
+                                                                                        <label for="music_qualification">Music Qualification<span style="color:red">*</span></label>
+                                                                                    </div> -->
+
+        {{-- <div class="form-floating form-floating-outline mb-3">
+        <textarea class="form-control" id="hobbies" name="hobbies" rows="3">{{ old('hobbies', isset($userDetail) ? $userDetail->hobbies : '') }}</textarea>
+        <label for="hobbies">Hobbies<span style="color:red">*</span></label>
+    </div>
+
+    <div class="form-floating form-floating-outline mb-3">
+        <textarea class="form-control" id="describe_yourself" name="describe_yourself" rows="3">{{ old('describe_yourself', isset($userDetail) ? $userDetail->describe_yourself : '') }}</textarea>
+        <label for="describe_yourself">Describe Yourself<span style="color:red">*</span></label>
+    </div> --}}
+
+        <!-- <div class="form-floating form-floating-outline mb-3">
+                                                                                        <select class="form-select" id="state" name="state">
+                                                                                            @foreach ($how_know as $hw)
+    <option value="{{ $hw }}" {{ old('how_know_about_auditions', isset($userDetail) ? $userDetail->how_know_about_auditions : '') == $hw ? 'selected' : '' }}>{{ $hw }}</option>
+    @endforeach
+                                                                                        </select>
+                                                                                        <label for="how_know_about_auditions">How did you know about auditions?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="how_know_about_auditions_detail" name="how_know_about_auditions_detail"
+                                                                                            rows="3">{{ old('how_know_about_auditions_detail', isset($userDetail) ? $userDetail->how_know_about_auditions_detail : '') }}</textarea>
+                                                                                        <label for="how_know_about_auditions_detail">Please provide details<span style="color:red">*</span></label>
+                                                                                    </div> -->
         <label id="photoLabel" for="photo">Photo<span style="color:red">*</span></label>
         <div class="form-floating form-floating-outline mb-3">
             <input type="file" class="form-control" id="photo" name="photo">
+        </div>
+
+        <!-- <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="why_tup_expectations" name="why_tup_expectations" rows="3">{{ old('why_tup_expectations', isset($userDetail) ? $userDetail->why_tup_expectations : '') }}</textarea>
+                                                                                        <label for="why_tup_expectations">Why do you have expectations from Sa Re Ga Ma Pa?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="why_we_select_you" name="why_we_select_you" rows="3">{{ old('why_we_select_you', isset($userDetail) ? $userDetail->why_we_select_you : '') }}</textarea>
+                                                                                        <label for="why_we_select_you">Why should we select you?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="future_plan_if_win" name="future_plan_if_win" rows="3">{{ old('future_plan_if_win', isset($userDetail) ? $userDetail->future_plan_if_win : '') }}</textarea>
+                                                                                        <label for="future_plan_if_win">What are your future plans if you win?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="opinion_new_season_tup" name="opinion_new_season_tup" rows="3">{{ old('opinion_new_season_tup', isset($userDetail) ? $userDetail->opinion_new_season_tup : '') }}</textarea>
+                                                                                        <label for="opinion_new_season_tup">What's your opinion on the new season of Sa Re Ga Ma Pa?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="written_composed_song_inspiration" name="written_composed_song_inspiration"
+                                                                                            rows="3">{{ old('written_composed_song_inspiration', isset($userDetail) ? $userDetail->written_composed_song_inspiration : '') }}</textarea>
+                                                                                        <label for="written_composed_song_inspiration">Have you written/composed any song? What's the inspiration behind it?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="life_changing_incident" name="life_changing_incident" rows="3">{{ old('life_changing_incident', isset($userDetail) ? $userDetail->life_changing_incident : '') }}</textarea>
+                                                                                        <label for="life_changing_incident">Share a life-changing incident you've experienced.<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="change_about_self_love_about_self" name="change_about_self_love_about_self"
+                                                                                            rows="3">{{ old('change_about_self_love_about_self', isset($userDetail) ? $userDetail->change_about_self_love_about_self : '') }}</textarea>
+                                                                                        <label for="change_about_self_love_about_self">What would you like to change about yourself and what do you love about yourself?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="unique_qualities" name="unique_qualities" rows="3">{{ old('unique_qualities', isset($userDetail) ? $userDetail->unique_qualities : '') }}</textarea>
+                                                                                        <label for="unique_qualities">Share your unique qualities.<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="main_goal_difficulties" name="main_goal_difficulties" rows="3">{{ old('main_goal_difficulties', isset($userDetail) ? $userDetail->main_goal_difficulties : '') }}</textarea>
+                                                                                        <label for="main_goal_difficulties">What are your main goals and what difficulties have you faced in achieving them?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="biggest_strength_support" name="biggest_strength_support" rows="3">{{ old('biggest_strength_support', isset($userDetail) ? $userDetail->biggest_strength_support : '') }}</textarea>
+                                                                                        <label for="biggest_strength_support">What's your biggest strength and what support do you have?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="favorite_judge_why" name="favorite_judge_why" rows="3">{{ old('favorite_judge_why', isset($userDetail) ? $userDetail->favorite_judge_why : '') }}</textarea>
+                                                                                        <label for="favorite_judge_why">Who's your favorite judge and why?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="role_model_inspiration" name="role_model_inspiration" rows="3">{{ old('role_model_inspiration', isset($userDetail) ? $userDetail->role_model_inspiration : '') }}</textarea>
+                                                                                        <label for="role_model_inspiration">Who's your role model and what inspires you about them?<span style="color:red">*</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="form-floating form-floating-outline mb-3">
+                                                                                        <textarea class="form-control" id="prepared_songs" name="prepared_songs" rows="3">{{ old('prepared_songs', isset($userDetail) ? $userDetail->prepared_songs : '') }}</textarea>
+                                                                                        <label for="prepared_songs">What songs are you prepared to perform?<span style="color:red">*</span></label>
+                                                                                    </div> -->
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
+                <label class="form-check-label" for="terms-conditions">
+                    I agree to
+                    <a href="{{ $tnclink }}">privacy policy & terms</a>
+                    <span style="color:red">*</span></label>
+            </div>
         </div>
         <button class="btn btn-primary d-grid w-100">Save Profile Details</button>
 
