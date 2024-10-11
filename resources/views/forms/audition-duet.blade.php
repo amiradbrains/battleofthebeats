@@ -68,8 +68,8 @@
         <span class="required">*</span></label>
 </div>
 <div class="form-floatingXXX  d-flex flex-column-reverse form-floating-outline mb-3">
-    <textarea class="form-control" id="choreograph " name="choreograph " rows="3" required>{{ old('choreograph ', isset($userDetail) ? $userDetail->choreograph : '') }}</textarea>
-    <label for="choreograph ">Who will choreograph your performance, please share his/her details. ? <span
+    <textarea class="form-control" id="choreograph" name="choreograph" rows="3" required>{{ old('choreograph', isset($userDetail) ? $userDetail->choreograph : '') }}</textarea>
+    <label for="choreograph">Who will choreograph your performance, please share his/her details. ? <span
             class="required">*</span></label>
 </div>
 <div class="form-floatingXXX  d-flex flex-column-reverse form-floating-outline mb-3">
