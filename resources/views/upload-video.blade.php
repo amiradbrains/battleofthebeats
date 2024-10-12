@@ -178,10 +178,10 @@
                                     body: formData
                                 })
                                 .then(response => {
-                                    console.log('Response:', response);
+                                    // console.log('Response:', response);
                                     if (response.ok) {
 
-                                        console.log('Metadata stored successfully');
+                                        // console.log('Metadata stored successfully');
                                         // window.location.href = "{{ route('thank-you') }}";
                                         window.location.reload();
                                         // Do something if metadata is stored successfully
