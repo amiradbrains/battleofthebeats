@@ -41,30 +41,12 @@
                     <div class="info-container">
                         <ul class="list-unstyled mb-4">
                             <li class="mb-3">
-                                <span class="h6">Title:</span>
-                                <span>{{ $video->title }}</span>
-                            </li>
-                            <li class="mb-3">
                                 <span class="h6">Description:</span>
                                 <span>{{ $video->description }}</span>
                             </li>
                             <li class="mb-3">
                                 <span class="h6">Upload Time:</span>
                                 <span>{{ $video->created_at->format('Y-m-d H:i:s') }}</span>
-                            </li>
-
-
-                            <li class="mb-3">
-                                <span class="h6">StageName:</span>
-                                <span>{{ $video->auditionDetails->stagename }}</span>
-                            </li>
-                            <li class="mb-3">
-                                <span class="h6">Audition city:</span>
-                                <span>{{ $video->auditionDetails->auditioncity }}</span>
-                            </li>
-                            <li class="mb-3">
-                                <span class="h6">Genre of Audition:</span>
-                                <span>{{ $video->auditionDetails->genre_of_singing }}</span>
                             </li>
                         </ul>
                         @role('admin')
@@ -208,16 +190,16 @@
                         </div>
                     @endif
                     <!-- <form action="{{ route('guru.rate.video', $video->id) }}" method="post">
-                                            @csrf
-                                            <label for="rating">Rate this video:</label>
-                                            <div class="rating-options">
-                                                @for ($i = 1; $i <= 10; $i++)
+                                                @csrf
+                                                <label for="rating">Rate this video:</label>
+                                                <div class="rating-options">
+                                                    @for ($i = 1; $i <= 10; $i++)
     <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
-                                                    <label for="rating{{ $i }}">{{ $i }}</label>
+                                                        <label for="rating{{ $i }}">{{ $i }}</label>
     @endfor
-                                            </div>
-                                            <button type="submit">Submit Rating</button>
-                                        </form> -->
+                                                </div>
+                                                <button type="submit">Submit Rating</button>
+                                            </form> -->
                     <hr />
                     @role('admin')
                         @if (!empty($video->auditionDetails->members))
