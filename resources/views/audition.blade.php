@@ -18,7 +18,7 @@
             </ul>
         </div>
     @endif
-    <form method="POST"
+    <form method="POST" id="auditionForm"
         action="{{ isset($userDetail) ? route('audition.update', [$userDetail->id, 'plan' => request()->plan]) : route('audition.store', ['plan' => request()->plan]) }}">
         @csrf
         @if (isset($userDetail))
@@ -84,7 +84,7 @@
                 and I
                 accept it moving forward. <span class="required">*</span></label>
         </div>
-        <button class="btn btn-primary d-grid w-100">Next: Upload Video</button>
+        <button id="auditionBtn" class="btn btn-primary d-grid w-100">Next: Upload Video</button>
 
         <!-- Add other fields here -->
 

@@ -35,14 +35,17 @@
                                 name="members[{{ $group_field }}][{{ $i }}]" required>
                                 <option value="">Select</option>
                                 <option value="male"
-                                    {{ old('members.' . $group_field . '.' . $i, isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'male' ? 'selected' : '') }}>
-                                    Male</option>
+                                    {{ old('members.' . $group_field . '.' . $i) == 'male' || (isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'male') ? 'selected' : '' }}>
+                                    Male
+                                </option>
                                 <option value="female"
-                                    {{ old('members.' . $group_field . '.' . $i, isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'female' ? 'selected' : '') }}>
-                                    Female</option>
+                                    {{ old('members.' . $group_field . '.' . $i) == 'female' || (isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'female') ? 'selected' : '' }}>
+                                    Female
+                                </option>
                                 <option value="other"
-                                    {{ old('members.' . $group_field . '.' . $i, isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'other' ? 'selected' : '') }}>
-                                    Other</option>
+                                    {{ old('members.' . $group_field . '.' . $i) == 'other' || (isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'other') ? 'selected' : '' }}>
+                                    Other
+                                </option>
                             </select>
                         @else
                             <!-- Default Text Input for Other Fields -->
