@@ -118,9 +118,9 @@ class AuditionController extends Controller
             $plan_id = $plan;
             // return redirect()->route('home')->with('error', 'Plan not found');
         }
-        if (!Payment::where('user_id', Auth::id())->where('plan_id', $plan_id)->where('payment_id', '!=', '')->where('status', '=', 'COMPLETED')->exists()) {
-            return redirect()->route('upload-video', ['plan' => $plan]);
-        }
+        // if (!Payment::where('user_id', Auth::id())->where('plan_id', $plan_id)->where('payment_id', '!=', '')->where('status', '=', 'COMPLETED')->exists()) {
+        //     return redirect()->route('upload-video', ['plan' => $plan]);
+        // }
 
         // Create or update user details
         Audition::updateOrCreate(
