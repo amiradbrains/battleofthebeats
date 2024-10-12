@@ -46,20 +46,23 @@
 
                 $videos = Video::where('user_id', auth()->user()->id)->get(); // Fetch videos for the logged-in user
             @endphp
-
-            <table class="table table-bordered">
-                <tr>
-                    <td>#</td>
-                    <td>Video</td>
-                </tr>
-                @foreach ($videos as $index => $video)
+            @if ($videos->isNotEmpty())
+                {
+                <table class="table table-bordered">
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $video->original_name }}</td>
-                        <!-- Assuming 'file_name' is the video file field in the Video model -->
+                        <td>#</td>
+                        <td>Video</td>
                     </tr>
-                @endforeach
-            </table>
+                    @foreach ($videos as $index => $video)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $video->original_name }}</td>
+                            <!-- Assuming 'file_name' is the video file field in the Video model -->
+                        </tr>
+                    @endforeach
+                </table>
+                }
+            @endif
         </div>
         {{-- <div class="form-group mb-2">
         <label for="videoTitle">Video Title</label>
@@ -69,7 +72,7 @@
     </div> --}}
         <div class="form-group mb-3">
             <label for="videoDescription">Description of your audition Video: <span class="required">*</span></label>
-            <textarea class="form-control" id="videoDescription" name="videoDescription" rows="3"></textarea>
+            <textarea class="form-control" id="videoDescription" name="videoDescription" rows="3">Description of your audition Video</textarea>
         </div>
         <div class="form-group mb-3">
             <label for="videoFile">Choose Video File <span class="required">*</span></label>

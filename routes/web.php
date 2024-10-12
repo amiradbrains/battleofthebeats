@@ -79,10 +79,10 @@ Route::middleware(['role:guru|admin'])->group(function () {
 
 Route::get('privacy-policy', function () {
     return view('pvc');
-});
+})->name('pvcp');
 Route::get('terms-conditions', function () {
     return view('tandc');
-});
+})->name('tandc');
 Route::get('refund-cancelation', function () {
     return view('refcanc');
-});
+})->name('refcanc');

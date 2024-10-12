@@ -132,9 +132,9 @@
 
                                     @if (!$ratedByGuru)
                                         <div class="form-floating form-floating-outline my-3">
-                                            <textarea class="form-control" id="comments" name="comments" rows="3"
-                                                placeholder="Your comments, eg ask for different style">{{ old('comments') }}</textarea>
                                             <label for="comments">Your comments</label>
+                                            <textarea class="form-control" id="comments" name="comments" rows="5"
+                                                placeholder="Your comments, eg ask for different style">{{ old('comments') }}</textarea>
                                         </div>
 
                                         <div class="form-check form-check-inline">
@@ -194,8 +194,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     @if ($video->auditionDetails->status != 'disqualified')
-                        <a class="btn btn-primary mb-2"
-                            href="{{ $video_path }}">
+                        <a class="btn btn-primary mb-2" href="{{ $video_path }}">
                             <span class="mdi mdi-download"></span> Download Video
                         </a>
 
@@ -209,43 +208,43 @@
                         </div>
                     @endif
                     <!-- <form action="{{ route('guru.rate.video', $video->id) }}" method="post">
-                                    @csrf
-                                    <label for="rating">Rate this video:</label>
-                                    <div class="rating-options">
-                                        @for ($i = 1; $i <= 10; $i++)
+                                            @csrf
+                                            <label for="rating">Rate this video:</label>
+                                            <div class="rating-options">
+                                                @for ($i = 1; $i <= 10; $i++)
     <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
-                                            <label for="rating{{ $i }}">{{ $i }}</label>
+                                                    <label for="rating{{ $i }}">{{ $i }}</label>
     @endfor
-                                    </div>
-                                    <button type="submit">Submit Rating</button>
-                                </form> -->
+                                            </div>
+                                            <button type="submit">Submit Rating</button>
+                                        </form> -->
                     <hr />
                     @role('admin')
-                    @if (!empty($video->auditionDetails->members))
-                        <label>Audition Member(s)</label>
-                        @php
-                            $fields = array_keys($video->auditionDetails->members);
-                        @endphp
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    @foreach ($fields as $field)
-                                        <th>
-                                            {{ $field }}
-                                        </th>
-                                    @endforeach
-                                </tr>
-                                @foreach ($video->auditionDetails->members['name'] as $key => $value)
+                        @if (!empty($video->auditionDetails->members))
+                            <label>Audition Member(s)</label>
+                            @php
+                                $fields = array_keys($video->auditionDetails->members);
+                            @endphp
+                            <table class="table table-bordered">
+                                <tbody>
                                     <tr>
                                         @foreach ($fields as $field)
-                                            <td>
-                                                {{ $video->auditionDetails->members[$field][$key] ?? '-' }}
-                                            </td>
+                                            <th>
+                                                {{ $field }}
+                                            </th>
                                         @endforeach
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                    @foreach ($video->auditionDetails->members['name'] as $key => $value)
+                                        <tr>
+                                            @foreach ($fields as $field)
+                                                <td>
+                                                    {{ $video->auditionDetails->members[$field][$key] ?? '-' }}
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         @endif
                     @endrole
 

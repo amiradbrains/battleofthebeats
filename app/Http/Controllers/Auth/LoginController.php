@@ -90,12 +90,10 @@ class LoginController extends Controller
             return redirect()->route('login')->with('error', 'Your account is not active. Please contact admin.');
         }
         if ($user->hasRole('admin')) {
-            return redirect('/admin/auditions/top');
-        }
-        else if ($user->hasRole('guru')) {
+            return redirect('admin/users');
+        } else if ($user->hasRole('guru')) {
             return redirect('/admin/videos');
-        }
-        else {
+        } else {
 
             // $payment = Payment::where('user_id', $user->id)->first();
 

@@ -109,7 +109,7 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8  z-10">
             <div class="flex justify-center mt-6 video-section">
                 <!-- <img src="{{ asset('images/logo-or.png') }}" width="150px"
-                        alt="{{ config('app.name', 'Battle of the Beats') }}"> -->
+                                            alt="{{ config('app.name', 'Battle of the Beats') }}"> -->
                 <iframe width="560" height="315"
                     src="https://www.youtube-nocookie.com/embed/TlFGfcujzHQ?si=nQuPcAXrM59BJ07f&amp;controls=0"
                     title="YouTube video player" frameborder="0"
@@ -249,6 +249,13 @@
                 {{-- <div class="text-center text-sm sm:text-center"> --}}
                 <img src="{{ asset('images/cards.png') }}" alt="all payment cards">
                 <img src="{{ asset('images/secure.png') }}" style="max-width: 120px;" alt="100% secure">
+                <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:ml-0 mt-3">
+                    <ul class="d-flex list-unstyled gap-3">
+                        <li><a href="{{ route('pvcp') }}" class="text-secondary">Privacy Policy</a></li>
+                        <li><a href="{{ route('tandc') }}" class="text-secondary">Terms & Conditions</a></li>
+                        <li><a href="{{ route('refcanc') }}" class="text-secondary">Refund & Cancelation</a></li>
+                    </ul>
+                </div>
                 <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:ml-0">
                     Copyright &copy; <?php echo date('Y'); ?> Battle of the Beats.<br />All rights reserved. Powered by
                     Cizzara Studios.
