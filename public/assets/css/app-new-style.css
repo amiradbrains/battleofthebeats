@@ -127,3 +127,13 @@ a:hover {
     background-color: #fff3f3 !important;
     border-color: #5ce2e5 !important;
 }
+.form-control::placeholder {
+    color: #a9a9a9 !important;
+}
+.info-container span.h6 {
+    color: #ffffff !important;
+}
+
+.info-container span {
+    color: #cbcbcb !important;
+}

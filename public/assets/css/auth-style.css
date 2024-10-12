@@ -336,3 +336,6 @@ a.cnfBtn {
 a.cnfBtn:hover {
     color: #5ce2e5 !important;
 }
+.form-control::placeholder {
+    color: #a9a9a9 !important;
+}

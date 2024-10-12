@@ -951,3 +951,6 @@ span.mdi {
 .video-section {
     position: relative;
 }
+.form-control::placeholder {
+    color: #000000 !important;
+}

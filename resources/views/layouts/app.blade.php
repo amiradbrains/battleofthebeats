@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,30 +19,34 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <style>
-        .btn-primary, .btn-success {
-background-color: #9c6868 !important;
-border-color: #9c6868 !important;
-}
+        .btn-primary,
+        .btn-success {
+            background-color: #9c6868 !important;
+            border-color: #9c6868 !important;
+        }
 
 
-/* Dark mode styles */
-.dark body {
-    background-color: #333;
-    color: #fff;
-}
-
-</style>
+        /* Dark mode styles */
+        .dark body {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
 
 
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo-or.png') }}" width="190px" alt="{{ config('app.name', 'Battle of the Beats') }}">
+                    <img src="{{ asset('images/logo-or.png') }}" width="190px"
+                        alt="{{ config('app.name', 'Battle of the Beats') }}">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -68,13 +73,14 @@ border-color: #9c6868 !important;
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
@@ -95,4 +101,5 @@ border-color: #9c6868 !important;
         </main>
     </div>
 </body>
+
 </html>

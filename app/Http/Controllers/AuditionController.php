@@ -38,10 +38,10 @@ class AuditionController extends Controller
             'dance_form' => 'required|string|max:200',
             'dance_style' => 'required|string|max:200',
             'name_representing' => 'required|string|max:200',
+            'responsibility' => 'required|accepted',
             'privacy_policy' => 'required|accepted',
             'terms_conditions' => 'required|accepted',
             'refund_policy' => 'required|accepted',
-            'responsibility' => 'required|accepted',
         ];
         $this->validation_msgs = [
             'written_composed_song_inspiration.*' => 'Please fillout your inspiration with no more than 2000 characters',
