@@ -129,7 +129,7 @@ class AuditionController extends Controller
         );
 
         // Redirect to the index page with success message
-        return redirect()->route('upload-video', ['plan' => $plan])->with('success', 'Audition details updated successfully, Now you can upload your video.');
+        return redirect()->route('upload-video', ['plan' => $plan])->with('success', 'Audition details updated successfully');
     }
 
     public function destroy(Audition $userDetail)
@@ -138,6 +138,6 @@ class AuditionController extends Controller
         $userDetail->delete();
 
         // Redirect to the index page with success message
-        return redirect()->route('audition')->with('success', 'Audition details updated successfully, Now you can upload your video.');
+        return redirect()->route('audition')->with('success', 'Audition details deleted successfully');
     }
 }
