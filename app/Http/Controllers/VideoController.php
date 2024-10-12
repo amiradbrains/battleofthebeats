@@ -67,10 +67,6 @@ class VideoController extends Controller
                 return view('audition', compact('userDetail', 'payment'));
             }
         }
-
-
-
-
         $userDetail = UserDetail::where('user_id', Auth::id())->first();
         return view('details', compact('userDetail'));
     }
@@ -152,7 +148,7 @@ class VideoController extends Controller
                 'videoFile' => [
                     'required',
                     'mimetypes:video/mp4,video/mpeg,video/quicktime',
-                    'max:100000', // Max size is 100MB (adjust as needed)
+                    'max:200000', // Max size is 200MB (adjust as needed)
                 ],
             ]
         );

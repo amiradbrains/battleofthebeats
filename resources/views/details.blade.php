@@ -140,17 +140,13 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <label for="members">No of Member<span style="color:red">*</span></label>
-
                 <div class="form-floating form-floating-outline mb-3">
                     <input type="number" class="form-control" id="members" name="members"
                         value="{{ old('members', isset($userDetail) ? $userDetail->members : '') }}"
                         placeholder="No of Member" required />
                 </div>
             </div>
-
         </div>
-
-
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <label for="city">City<span style="color:red">*</span></label>
@@ -207,33 +203,9 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="row">
-        <div class="col-md-4">
-        <label for="education">Education<span style="color:red">*</span></label>
-
-            <div class="form-floating form-floating-outline mb-3">
-                <input type="text" class="form-control" id="education" name="education" value="{{ old('education', isset($userDetail) ? $userDetail->education : '') }}" placeholder="Enter your education">
-            </div>
-        </div>
-        <div class="col-md-4">
-        <label for="occupation">Occupation<span style="color:red">*</span></label>
-
-            <div class="form-floating form-floating-outline mb-3">
-                <input type="text" class="form-control" id="occupation" name="occupation" value="{{ old('occupation', isset($userDetail) ? $userDetail->occupation : '') }}" placeholder="Enter your occupation">
-            </div>
-        </div>
-        <div class="col-md-4">
-        <label for="work_experience">Work Experience<span style="color:red">*</span></label>
-
-            <div class="form-floating form-floating-outline mb-3">
-                <input type="text" class="form-control" id="work_experience" name="work_experience" value="{{ old('work_experience', isset($userDetail) ? $userDetail->work_experience : '') }}" placeholder="Enter your work experience">
-            </div>
-        </div>
-    </div> --}}
-
         <div class="row">
             <div class="col-md-4">
-                <label for="instagram">Instagram Link<span style="color:red">*</span></label>
+                <label for="instagram">Instagram profile</label>
                 <div class="form-floating form-floating-outline mb-3">
                     <input type="url" class="form-control" id="instagram" name="instagram"
                         value="{{ old('instagram', isset($userDetail) ? $userDetail->instagram : '') }}"
@@ -241,7 +213,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="youtube">YouTube Link<span style="color:red">*</span></label>
+                <label for="youtube">YouTube profile</label>
                 <div class="form-floating form-floating-outline mb-3">
                     <input type="url" class="form-control" id="youtube" name="youtube"
                         value="{{ old('youtube', isset($userDetail) ? $userDetail->youtube : '') }}"
@@ -249,20 +221,17 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="facebook">Facebook Link<span style="color:red">*</span></label>
+                <label for="facebook">Facebook profile</label>
                 <div class="form-floating form-floating-outline mb-3">
                     <input type="url" class="form-control" id="facebook" name="facebook"
                         value="{{ old('facebook', isset($userDetail) ? $userDetail->facebook : '') }}"
                         placeholder="Enter your Facebook link">
                 </div>
             </div>
-
         </div>
-
-
         <!-- Guardian Information -->
         <hr>
-        <div class="guardanForm d-none">
+        <div class="guardanForm d-block">
             <div class="row">
                 <div class="col-md-4">
                     <label for="g_first_name">Guardian's First Name<span style="color:red">*</span></label>
@@ -350,10 +319,11 @@
 @section('custom-js')
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#teamType').on('change', function() {
-                var selectedValue = $(this).val();
+            // Function to update form elements based on the selected team type
+            function updateFormElements(selectedValue) {
                 var guardianForm = $('.guardanForm');
                 var photoLabel = $('#photoLabel');
+                var membersInput = $('#members');
 
                 // Toggle guardian form visibility
                 if (selectedValue === 'solo-jr') {
@@ -362,22 +332,42 @@
                     guardianForm.removeClass('d-block').addClass('d-none');
                 }
 
-                // Update photo label based on selection
+                // Update photo label and members input based on selection
                 switch (selectedValue) {
                     case 'solo-jr':
                     case 'solo':
-                        photoLabel.html('Solo Photo<span style="color:red">*</span>');
+                        photoLabel.html('Upload Solo Photo<span style="color:red">*</span>');
+                        membersInput.val(1).prop('disabled', true); // Set members to 1 and disable input
+                        membersInput.removeAttr('min'); // Remove min attribute when not needed
                         break;
                     case 'duet':
-                        photoLabel.html('Duet Photo<span style="color:red">*</span>');
+                        photoLabel.html('Upload Duet Photo<span style="color:red">*</span>');
+                        membersInput.val(2).prop('disabled', true); // Set members to 2 and disable input
+                        membersInput.removeAttr('min'); // Remove min attribute when not needed
                         break;
                     case 'group':
-                        photoLabel.html('Group Photo<span style="color:red">*</span>');
+                        photoLabel.html('Upload Group Photo<span style="color:red">*</span>');
+                        membersInput.val(3).prop('disabled', false); // Set members to 3 and enable input
+                        membersInput.attr('min', 3); // Set minimum to 3 for group
                         break;
                     default:
                         photoLabel.html('Photo<span style="color:red">*</span>');
+                        membersInput.val('').prop('disabled', false); // Enable input for manual entry
+                        membersInput.removeAttr('min'); // Remove min attribute for default
                         break;
                 }
+            }
+
+            // Run on page load if a value is already selected
+            var initialValue = $('#teamType').val();
+            if (initialValue) {
+                updateFormElements(initialValue);
+            }
+
+            // Event listener for when the teamType is changed
+            $('#teamType').on('change', function() {
+                var selectedValue = $(this).val();
+                updateFormElements(selectedValue);
             });
         });
     </script>

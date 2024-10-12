@@ -1,48 +1,64 @@
 @php
-    $group_fields = ['name', 'dob', 'contact_no', 'gender', 'email', 'address'];
     $members = App\Models\UserDetail::where('user_id', Auth::user()->id)->value('members');
+    $group_fields = ['name', 'dob', 'contact_no', 'gender', 'email', 'address'];
 @endphp
+
 <label for="group_name">Number of Group Members and Details: <span class="required">*</span></label>
 <table class="table table-bordered mb-3">
     <tbody>
         <tr>
-            <th>
-                Content
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                DOB
-            </th>
-            <th>
-                Contact No.
-            </th>
-            <th>
-                Gender
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Full Address
-            </th>
+            <th>Contestants</th>
+            <th>Full Name</th>
+            <th>D.O.B</th>
+            <th>Contact No.</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Full Address</th>
         </tr>
+
         @for ($i = 0; $i < $members; $i++)
             <tr>
                 <th>Participant {{ $i + 1 }}</th>
+
                 @foreach ($group_fields as $key => $group_field)
                     <td>
-                        <input type="text" class="form-control" id="members[{{ $group_field }}][{{ $i }}]"
-                            name="members[{{ $group_field }}][{{ $i }}]"
-                            value="{{ old('members.' . $group_field . '.' . $i, isset($userDetail) ? $userDetail->members[$group_field][$i] : '') }}"
-                            required />
+                        @if ($group_field === 'dob')
+                            <!-- Date Selector for Date of Birth -->
+                            <input type="date" class="form-control"
+                                id="members[{{ $group_field }}][{{ $i }}]"
+                                name="members[{{ $group_field }}][{{ $i }}]"
+                                value="{{ old('members.' . $group_field . '.' . $i, isset($userDetail->members[$group_field][$i]) ? $userDetail->members[$group_field][$i] : '') }}"
+                                required />
+                        @elseif ($group_field === 'gender')
+                            <!-- Dropdown for Gender Selection -->
+                            <select class="form-control" id="members[{{ $group_field }}][{{ $i }}]"
+                                name="members[{{ $group_field }}][{{ $i }}]" required>
+                                <option value="">Select</option>
+                                <option value="male"
+                                    {{ old('members.' . $group_field . '.' . $i, isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'male' ? 'selected' : '') }}>
+                                    Male</option>
+                                <option value="female"
+                                    {{ old('members.' . $group_field . '.' . $i, isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'female' ? 'selected' : '') }}>
+                                    Female</option>
+                                <option value="other"
+                                    {{ old('members.' . $group_field . '.' . $i, isset($userDetail->members[$group_field][$i]) && $userDetail->members[$group_field][$i] == 'other' ? 'selected' : '') }}>
+                                    Other</option>
+                            </select>
+                        @else
+                            <!-- Default Text Input for Other Fields -->
+                            <input type="text" class="form-control"
+                                id="members[{{ $group_field }}][{{ $i }}]"
+                                name="members[{{ $group_field }}][{{ $i }}]"
+                                value="{{ old('members.' . $group_field . '.' . $i, isset($userDetail->members[$group_field][$i]) ? $userDetail->members[$group_field][$i] : '') }}"
+                                required />
+                        @endif
                     </td>
                 @endforeach
             </tr>
         @endfor
     </tbody>
 </table>
+
 
 <div class="form-floatingXXX  d-flex flex-column-reverse form-floating-outline mb-3">
     <textarea class="form-control" id="previous_performance" name="previous_performance" rows="3" required>{{ old('previous_performance', isset($userDetail) ? $userDetail->previous_performance : '') }}</textarea>
