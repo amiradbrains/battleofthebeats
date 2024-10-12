@@ -337,22 +337,22 @@
                     case 'solo-jr':
                     case 'solo':
                         photoLabel.html('Upload Solo Photo<span style="color:red">*</span>');
-                        membersInput.val(1).prop('disabled', true); // Set members to 1 and disable input
+                        membersInput.val(1).prop('readonly', true); // Set members to 1, make it readonly
                         membersInput.removeAttr('min'); // Remove min attribute when not needed
                         break;
                     case 'duet':
                         photoLabel.html('Upload Duet Photo<span style="color:red">*</span>');
-                        membersInput.val(2).prop('disabled', true); // Set members to 2 and disable input
+                        membersInput.val(2).prop('readonly', true); // Set members to 2, make it readonly
                         membersInput.removeAttr('min'); // Remove min attribute when not needed
                         break;
                     case 'group':
                         photoLabel.html('Upload Group Photo<span style="color:red">*</span>');
-                        membersInput.val(3).prop('disabled', false); // Set members to 3 and enable input
+                        membersInput.val(3).prop('readonly', false); // Set members to 3, allow editing
                         membersInput.attr('min', 3); // Set minimum to 3 for group
                         break;
                     default:
                         photoLabel.html('Photo<span style="color:red">*</span>');
-                        membersInput.val('').prop('disabled', false); // Enable input for manual entry
+                        membersInput.val('').prop('readonly', false); // Enable input for manual entry
                         membersInput.removeAttr('min'); // Remove min attribute for default
                         break;
                 }
