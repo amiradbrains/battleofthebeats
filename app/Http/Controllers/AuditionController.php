@@ -43,6 +43,13 @@ class AuditionController extends Controller
             'refund_policy' => 'required|accepted',
             'responsibility' => 'required|accepted',
         ];
+        $this->validation_msgs = [
+            'written_composed_song_inspiration.*' => 'Please fillout your inspiration with no more than 2000 characters',
+
+            // 'genre_of_singing.*' => 'Please fillout your genre/type of your audition with no more than 300 characters',
+            // 'music_experience.*' => 'Please fillout your previous experience with no more than 5000 characters',
+            // 'music_qualification.*' => 'Please fillout your music/dancing qualification with no more than 5000 characters',
+        ];
     }
     public function index()
     {
