@@ -182,6 +182,7 @@
 
                                         console.log('Metadata stored successfully');
                                         // window.location.href = "{{ route('thank-you') }}";
+                                        window.location.reload();
                                         // Do something if metadata is stored successfully
                                     } else {
                                         console.error('Failed to store metadata');
