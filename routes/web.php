@@ -24,7 +24,7 @@ Route::get('/', function () {
 //     return redirect('/home');
 // })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 Route::get('/top/{plan?}', [VideoRatingController::class, 'countAvg']);
 
 Route::get('/home', function () {
