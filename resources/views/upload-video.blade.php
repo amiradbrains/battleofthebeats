@@ -47,7 +47,6 @@
                 $videos = Video::where('user_id', auth()->user()->id)->get(); // Fetch videos for the logged-in user
             @endphp
             @if ($videos->isNotEmpty())
-                {
                 <table class="table table-bordered">
                     <tr>
                         <td>#</td>
@@ -61,7 +60,6 @@
                         </tr>
                     @endforeach
                 </table>
-                }
             @endif
         </div>
         {{-- <div class="form-group mb-2">
