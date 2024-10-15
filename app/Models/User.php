@@ -2,29 +2,30 @@
 
 namespace App\Models;
 
+use Laravel\Cashier\Billable;
+use App\Mail\VerifyEmailMailable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\URL;
+
+use Illuminate\Support\Facades\Mail;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use App\Notifications\VerifyEmailNotification;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\URL;
-use Laravel\Cashier\Billable;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, Billable, HasRoles;
-    //     public function sendEmailVerificationNotification()
-    // {
-    //     $this->notify(new VerifyEmailNotification);
-    // }
-    //     public function sendEmailVerificationNotification()
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailNotification);
+    }
+    // public function sendEmailVerificationNotification()
     // {
     //     $url = URL::temporarySignedRoute(
     //         'verification.verify',
@@ -32,12 +33,9 @@ class User extends Authenticatable
     //         ['id' => $this->id, 'hash' => sha1($this->email_verification_token)]
     //     );
 
-    //     $mail = new MailMessage;
-    //     $mail->line('Click the button below to verify your email address:')
-    //         ->action('Verify Email', $url)
-    //         ->from('audition@theunitedproduction.com', 'TUP');
+    //     $mailable = new VerifyEmailMailable($url);
 
-    //     Mail::to($this->email)->send($mail);
+    //     Mail::to($this->email)->send($mailable);
     // }
     /**
      * The attributes that are mass assignable.
@@ -48,8 +46,7 @@ class User extends Authenticatable
         'name',
         'email',
         'phone',
-        'password',
-        'email_verified_at'
+        'password'
     ];
 
     /**

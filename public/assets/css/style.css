@@ -954,3 +954,13 @@ span.mdi {
 .form-control::placeholder {
     color: #000000 !important;
 }
+.policydiv {
+    display: inline-flex;
+    gap: 0.5em;
+    list-style: none;
+    margin: 1em auto;
+}
+
+.policydiv li a:hover {
+    text-decoration: underline;
+}

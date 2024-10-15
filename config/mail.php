@@ -81,6 +81,12 @@ return [
                 'log',
             ],
         ],
+        'stream' => [
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+            ],
+        ],
     ],
 
     /*

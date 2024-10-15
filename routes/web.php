@@ -18,11 +18,10 @@ Route::get('/', function () {
     return view('welcome', ['plans' => Plan::where('is_active', 1)->get()]);
 })->name('welcome');
 
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
-
-//     return redirect('/home');
-// })->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
 Auth::routes(['verify' => true]);
 Route::get('/top/{plan?}', [VideoRatingController::class, 'countAvg']);
