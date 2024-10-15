@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();  // This verifies the user's email
     return redirect('/home');
-})->middleware('signed')->name('verification.verify'); // Remove 'auth' middleware if login is not needed
+})->middleware(['auth', 'signed'])->name('verification.verify'); // Remove 'auth' middleware if login is not needed
 
 
 Auth::routes(['verify' => true]);
