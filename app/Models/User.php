@@ -30,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(60),
-            ['id' => $this->id, 'hash' => sha1($this->email_verification_token)]
+            ['id' => $this->id, 'hash' => sha1($this->email)]  // Use the user's email
         );
 
         $mailable = new VerifyEmailMailable($url);
