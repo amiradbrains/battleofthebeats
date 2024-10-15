@@ -19,9 +19,10 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+    $request->fulfill();  // This verifies the user's email
     return redirect('/home');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+})->middleware('signed')->name('verification.verify'); // Remove 'auth' middleware if login is not needed
+
 
 Auth::routes(['verify' => true]);
 Route::get('/top/{plan?}', [VideoRatingController::class, 'countAvg']);
