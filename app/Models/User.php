@@ -21,22 +21,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, Billable, HasRoles;
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new VerifyEmailNotification);
-    }
     // public function sendEmailVerificationNotification()
     // {
-    //     $url = URL::temporarySignedRoute(
-    //         'verification.verify',
-    //         now()->addMinutes(60),
-    //         ['id' => $this->id, 'hash' => sha1($this->email_verification_token)]
-    //     );
-
-    //     $mailable = new VerifyEmailMailable($url);
-
-    //     Mail::to($this->email)->send($mailable);
+    //     $this->notify(new VerifyEmailNotification);
     // }
+    public function sendEmailVerificationNotification()
+    {
+        $url = URL::temporarySignedRoute(
+            'verification.verify',
+            now()->addMinutes(60),
+            ['id' => $this->id, 'hash' => sha1($this->email_verification_token)]
+        );
+
+        $mailable = new VerifyEmailMailable($url);
+
+        Mail::to($this->email)->send($mailable);
+    }
     /**
      * The attributes that are mass assignable.
      *
