@@ -4,7 +4,7 @@
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100xx dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
 
         @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-11">
+            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-11 relative">
                 @auth
                     @role('admin')
                         <a href="{{ route('admin.auditions.index') }}?audition=TNDS-S1&status=&sort=highest-rating"
@@ -106,7 +106,7 @@
 
             </ul>
         </div>
-        <div class="max-w-7xl mx-auto p-6 lg:p-8  z-10">
+        <div class="max-w-7xl mx-auto p-6 lg:p-8  z-10 relative">
             <div class="flex justify-center mt-6 video-section">
                 <!-- <img src="{{ asset('images/logo-or.png') }}" width="150px"
                                             alt="{{ config('app.name', 'Battle of the Beats') }}"> -->
