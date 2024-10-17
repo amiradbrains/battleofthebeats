@@ -20,7 +20,9 @@ class AdminNewUserRegistered extends Mailable
 
     public function build()
     {
-        return $this->subject('New Contestant Registered')
-            ->view('emails.admin-new-user');  // Ensure this view is created
+        return $this->markdown('emails.admin-new-user')
+        ->with([
+            'user' => $this->user,
+        ]);
     }
 }
