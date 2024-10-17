@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
+use App\Mail\AdminNewUserRegistered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -73,6 +75,9 @@ class RegisterController extends Controller
         $user->assignRole('user');
         Auth::login($user);
         $user->sendEmailVerificationNotification();
+
+        // Send email notification to admin about new user registration
+        Mail::to('contact@battleofthebeats.in')->send(new AdminNewUserRegistered($user));
         return $user;
 
     }
