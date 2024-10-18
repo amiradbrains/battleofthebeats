@@ -71,7 +71,6 @@
     <div class="justify-content-center">
         <div class="col-md-6 mx-auto">
             <hr />
-            {{ $users->links() }}
             {{ $users->appends(request()->input())->links() }}
         </div>
     </div>
