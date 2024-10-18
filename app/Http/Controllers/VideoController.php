@@ -183,14 +183,14 @@ class VideoController extends Controller
 
             // Save the video to the database
             $video->save();
+
+            $successMessage = "Video uploaded successfully, you will be notified once it is qualified or disqualified for the next round.";
+            session()->flash('success', $successMessage);
             // Send email to the uploader (authenticated user) - passing false for the $isAdmin parameter
             Mail::to($user->email)->send(new VideoUploaded($video, $user, false));
 
             // Send email to the admin - passing true for the $isAdmin parameter
-            Mail::to(config('mail.contact@battleofthebeats.in'))->send(new VideoUploaded($video, $user, true));
-
-            $successMessage = "Video uploaded successfully, you will be notified once it is qualified or disqualified for the next round.";
-            session()->flash('success', $successMessage);
+            Mail::to('contact@battleofthebeats.in')->send(new VideoUploaded($video, $user, true));
 
             return response()->json(['success' => true, 'message' => $successMessage], 200);
         }
