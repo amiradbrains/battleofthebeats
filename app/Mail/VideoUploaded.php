@@ -26,14 +26,14 @@ class VideoUploaded extends Mailable
         if ($this->isAdmin) {
             return $this->markdown('emails.admin_video_uploaded')
                 ->with([
-                    'videoTitle' => $this->video->title,
+                    'videoTitle' => $this->video->description,
                     'userName' => $this->user->name,
                     'userEmail' => $this->user->email,
                 ]);
         }
         return $this->markdown('emails.user_video_uploaded')
             ->with([
-                'videoTitle' => $this->video->title,
+                'videoTitle' => $this->video->description,
                 'userName' => $this->user->name,
             ]);
     }

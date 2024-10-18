@@ -6,7 +6,7 @@ Hi Admin,
 Contestent has uploaded video. Here are the details:
 
 - **Name**:  {{ $userName }}
-- **Email**: {{ userEmail }}
+- **Email**: {{ $userEmail }}
 - **Video Title**:{{ $videoTitle }} 
 
 Please review the video and take the necessary actions.
