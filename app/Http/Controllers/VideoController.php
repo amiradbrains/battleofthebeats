@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payment;
 use App\Models\Plan;
+use App\Models\Video;
+use App\Models\Payment;
 use App\Models\Audition;
 use App\Models\UserDetail;
-use App\Models\Video;
+use App\Mail\VideoUploaded;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 // use League\Flysystem\AwsS3V3\AwsS3V3Adapter;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Filesystem\AwsS3V3Adapter;
+use Illuminate\Support\Facades\Validator;
 
 class VideoController extends Controller
 {
@@ -181,6 +183,11 @@ class VideoController extends Controller
 
             // Save the video to the database
             $video->save();
+            // Send email to the uploader (authenticated user) - passing false for the $isAdmin parameter
+            Mail::to($user->email)->send(new VideoUploaded($video, $user, false));
+
+            // Send email to the admin - passing true for the $isAdmin parameter
+            Mail::to(config('mail.contact@battleofthebeats.in'))->send(new VideoUploaded($video, $user, true));
 
             $successMessage = "Video uploaded successfully, you will be notified once it is qualified or disqualified for the next round.";
             session()->flash('success', $successMessage);
