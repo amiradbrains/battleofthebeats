@@ -50,7 +50,7 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
     {
         $headings = [
             'name',
-            'videos_count',
+            'videos_uploaded',
             'email',
             'phone',
             'date_of_birth',
