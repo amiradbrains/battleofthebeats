@@ -120,7 +120,9 @@ class AdminVideoController extends Controller
         } else {
             $query->whereHas('details');
         }
-        $users = $query->paginate(env('RECORDS_PER_PAGE', 10));
+        $users = $query->withCount('videos') // Count the videos related to each user
+        ->paginate(env('RECORDS_PER_PAGE', 10));
+
         return view('admin.users.index', compact('users'));
     }
     public function exportUserList(Request $request)

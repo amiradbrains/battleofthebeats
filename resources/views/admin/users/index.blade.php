@@ -28,6 +28,7 @@
                 <tr>
                 <td><input class="form-check-input" type="checkbox" name="selectAll" id="selectAll" value="selectAll"></td>
                     <th>Contestant</th>
+                    <th>Uploaded Video</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Birthdate</th>
@@ -46,6 +47,9 @@
                 <td><input class="form-check-input" type="checkbox" name="selectedRecords[]" value="{{ $user->id }}"></td>
 
                     <td><a href="{{ route('admin.users.show', $user) }}">{{ $user->details->last_name .' '.$user->details->first_name }}</a></td>
+                    <td>
+                        <p>{{ $user->videos_count > 0 ? 'Yes' : 'No' }}</p>
+                    </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->details->phone }}</td>
                     <td>{{ $user->details->date_of_birth }}</td>

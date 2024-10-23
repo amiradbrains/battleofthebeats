@@ -32,6 +32,7 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
     {
         return [
             $user->details->first_name . ' ' . $user->details->last_name,
+            $user->videos_count > 0 ? 'Yes' : 'No',
             $user->email,
             $user->details->phone,
             $user->details->date_of_birth,
@@ -49,7 +50,7 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
     {
         $headings = [
             'name',
-           
+            'videos_count',
             'email',
             'phone',
             'date_of_birth',
