@@ -129,7 +129,10 @@ class AdminVideoController extends Controller
     {
         $selectedRecordIds = $request->input('selectedRecords');
 
-        $query = User::where('id', '!=', auth()->user()->id)->whereHas('details');
+        $query = User::where('id', '!=', auth()->user()->id)
+            ->whereHas('details')
+            ->with('details') // Ensure the details relationship is eager loaded
+            ->withCount('videos');
 
         if ($selectedRecordIds)
             $selectedRecords = $query->whereIn('id', $selectedRecordIds)->get();
